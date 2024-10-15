@@ -33,4 +33,4 @@ async function createNodes(count: number) {
 	console.timeEnd("createNodes");
 }
 
-createNodes(40);
+createNodes(4000);
