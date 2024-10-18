@@ -1,6 +1,6 @@
 import type { GraphNode } from "@/types";
 import styles from "./styles.module.css";
-import type React from "react";
+import React from "react";
 import { useNodeActions } from "@/store";
 import { NodeContent } from "@/components/NodeContent";
 import {useEffect, useState} from "react";
@@ -9,7 +9,7 @@ interface Props {
 	node: GraphNode;
 }
 
-export const Node: React.FC<Props> = ({
+export const C: React.FC<Props> = ({
 	node: { position, value, id: key },
 }) => {
 
@@ -19,7 +19,7 @@ export const Node: React.FC<Props> = ({
 
 	useEffect(() => {
 		console.log('node render')
-	}, []);
+	});
 
 
 	const [x, y] = position;
@@ -43,3 +43,5 @@ export const Node: React.FC<Props> = ({
 		</div>
 	);
 };
+
+export const Node = React.memo(C)
