@@ -20,9 +20,7 @@ export const useInitNodes = () => {
 };
 
 export const useGetNodes = () => {
-	const selected = useSelector((state) => state.nodes);
-
-	return useMemo(() => selected, [])
+	return useSelector((state) => state.nodes, () => true);
 }
 
 export const useNodeActions = (id: ID) => {
