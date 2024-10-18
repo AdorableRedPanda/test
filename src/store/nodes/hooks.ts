@@ -12,6 +12,7 @@ export const useInitNodes = () => {
 
 	useEffect(() => {
 		setInterval(() => {
+			console.log('update store')
 			dispatch(NodesActions.init(nodes.slice(0, count.current)))
 			count.current = count.current + 1
 		}, 2000);
