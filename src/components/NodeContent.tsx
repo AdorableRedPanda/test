@@ -10,7 +10,6 @@ interface Props {
 
 export const NodeContent: React.FC<Props> = ({ value }) => (
 	<div className={styles["node-content"]}>
-		<Circles/>
 		{value}
 	</div>
 )

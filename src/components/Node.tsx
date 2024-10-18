@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import type React from "react";
 import { useNodeActions } from "@/store";
 import { NodeContent } from "@/components/NodeContent";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 
 interface Props {
 	node: GraphNode;
@@ -15,6 +15,12 @@ export const Node: React.FC<Props> = ({
 
 	const [state, setState] = useState(false)
 	const { update, delete: deleteNode } = useNodeActions(key);
+
+
+	useEffect(() => {
+		console.log('node render')
+	}, []);
+
 
 	const [x, y] = position;
 	const transform = `translate(${x}px, ${y}px)`;

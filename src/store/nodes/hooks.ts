@@ -9,11 +9,15 @@ export const useInitNodes = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(NodesActions.init(nodes));
+		setInterval(() => dispatch(NodesActions.init(nodes)), 1000);
 	}, [dispatch]);
 };
 
-export const useGetNodes = () => useSelector((state) => state.nodes);
+export const useGetNodes = () => {
+	const selected = useSelector((state) => state.nodes);
+
+	return useMemo(() => selected, [])
+}
 
 export const useNodeActions = (id: ID) => {
 	const dispatch = useDispatch();
