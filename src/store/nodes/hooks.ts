@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useMemo } from "react";
+import {useEffect, useMemo, useRef} from "react";
 import { NodesActions } from "./actions";
 
 import nodes from "../../../data/nodes.json";
@@ -8,8 +8,13 @@ import type { ID, NodesStore } from "@/types";
 export const useInitNodes = () => {
 	const dispatch = useDispatch();
 
+	const count = useRef(5);
+
 	useEffect(() => {
-		setInterval(() => dispatch(NodesActions.init(nodes)), 1000);
+		setInterval(() => {
+			dispatch(NodesActions.init(nodes.slice(0, count.current)))
+			count.current = count.current + 1
+		}, 2000);
 	}, [dispatch]);
 };
 
