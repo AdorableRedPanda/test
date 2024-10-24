@@ -4,21 +4,30 @@ export interface WithId {
 	id: ID;
 }
 
-export interface WithValue<TData> {
-	value: TData;
+export interface WithIds {
+	ids: ID[];
 }
 
 export type Relation<TType> = [TType, TType];
 
-export interface GraphNode<TValue = string> extends WithId, WithValue<TValue> {
-	version: ID;
-	position: Relation<number>;
+export interface GNode<TValue = string> extends WithId {
+	content: ID[];
 }
 
-export interface Edge<TValue = string> extends WithId {
-	value: TValue;
+export interface Edge extends WithId {
 	relation: Relation<ID>;
 }
 
-export type NodesStore = GraphNode[];
-export type EdgesStore = Record<ID, Edge>;
+export interface NodeContent extends WithId {
+	parent: ID;
+}
+
+export type NodesStore = GNode[];
+export type ContentStore = NodeContent[];
+export type EdgesStore = Edge[];
+
+export interface AppStore {
+	nodes: NodesStore;
+	content: ContentStore;
+	edges: EdgesStore;
+}

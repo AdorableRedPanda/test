@@ -1,8 +1,11 @@
 import { createAction } from "@reduxjs/toolkit";
-import type { NodesStore, GraphNode, WithId, WithValue } from "@/types";
+import type { WithId, ID } from "@/types";
+
+interface DeleteContentPayload extends WithId {
+	content: ID;
+}
 
 export const NodesActions = {
 	delete: createAction<WithId>("NODES_DELETE"),
-	update: createAction<WithId & WithValue<string>>("NODES_UPDATE"),
-	init: createAction<NodesStore>("NODES_INIT_STORE"),
+	deleteContent: createAction<DeleteContentPayload>("NODES_DELETE_CONTENT"),
 };
